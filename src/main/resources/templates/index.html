@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<base href="/" />
+		
+		<title>Keycloak POC</title>
+		<link href='./css/style.css' rel="stylesheet" type="text/css" />
+		<link href='./css/libs/font-awesome.css' rel="stylesheet" type="text/css" />
+		<link href='./css/libs/bootstrap.min.css' rel="stylesheet" type="text/css" />
+		<link href='./css/libs/bootstrap-theme.min.css' rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="container" class="container ng-cloak" ng-controller="KeycloakSecController as keycloakSecController">
+			<header class="container-header page-header text-center">
+				<img src="./images/keycloak-logo.png"/>
+				<h5><a id="keycloak-link" target="_blank" href="http://www.keycloak.org">www.keycloak.org</a></h5>
+			</header>
+			<div id="container-body" class="container-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<h2>Keycloak information:</h2>
+							<h4>The user logged on system is <span class="keycloak-text">{{keycloakSecController.keycloakUser}}</span></h4>
+							<h4>The realm used is <span class="keycloak-text">{{keycloakSecController.keycloakRealm}}</span></h4>
+							<h2>Try logout:</h2>
+							<button id="logout-keycloak" class="btn btn btn-primary" ng-permission="" role="keycloakSecController.allowLogout" ng-click="keycloakSecController.doLogout()">LOGOUT</button>
+							<span>Must have the 'logout' role</span>
+						</div>
+						<div class="col-lg-6">
+							<h2>API Test:</h2>
+							<button id="get-contacts-keycloak" class="btn btn btn-primary" ng-click="keycloakSecController.getContacts()">GET CONTACTS</button>
+							<span>Must have the 'get-contacts' role</span>
+							<h2>API Result:</h2>
+							<span>{{keycloakSecController.APIResult}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer class="container-footer footer">
+				<div>
+					<p class="text-muted">Proof of concept for keycloak using Spring Boot and AngularJS in a multi-tenant scenario</p>
+				</div>
+			</footer>
+		</div>
+
+		<script type="text/javascript" src="./js/libs/jquery.min.js"></script>
+		<script type="text/javascript" src="http://localhost:8080/auth/js/keycloak.js"></script>
+		<script type="text/javascript" src="./js/libs/bootstrap.min.js"></script>
+		<script type="text/javascript" src="./js/app/start-keycloak.js"></script>
+		<script type="text/javascript" src="./js/libs/angular.min.js"></script>
+		<script type="text/javascript" src="./js/app/app.js"></script>
+		<script type="text/javascript" src="./js/app/directives/ng-permission.js"></script>
+		<script type="text/javascript" src="./js/app/services/service.js"></script>
+		<script type="text/javascript" src="./js/app/controllers/keycloak-sec-ctrl.js"></script>
+		<script type="text/javascript" src="./js/app/configurations/app-config.js"></script>
+
+	</body>
+</html>
